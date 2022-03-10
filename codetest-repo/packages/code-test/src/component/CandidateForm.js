@@ -15,6 +15,8 @@ const CandidateForm=()=> {
     const [city,setCity] = useState('')
     const [contactNumber,setContactNumber] = useState('')
     const [selectedValue, setSelectedValue] = useState('');
+    const [message,setMessage] = useState('')
+    const [success,setSuccess] = useState(false)
 
     const dispatch = useDispatch()
     const candidate = useSelector(selectCandidate)
@@ -34,7 +36,11 @@ const CandidateForm=()=> {
         }))
        
         axios.post("http://localhost:9000/home/candidate",candidateData.payload )
-        .then(res => console.log("submit"))
+        .then(res => {
+            console.log("submit")
+            setMessage(res)
+            setSuccess(true)
+        })
         .catch(err=>console.log(err))
       
     }
@@ -101,10 +107,11 @@ const CandidateForm=()=> {
                     </RadioGroup>
                 </div>
             </div> 
-            { candidate.onSubmit ?<span> Data Successfully submitted </span> :<span></span>}
+        
             <div className='button'> 
                 <Button variant="contained" onClick={handleSubmit}>Add Details</Button>
             </div>
+            { success ?<span> {message} </span> :<span></span>}
         </div>
     </Box>
   );
