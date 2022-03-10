@@ -1,0 +1,29 @@
+{
+  "name": "@codetest/root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "start": "lerna exec --scope code-test -- yarn start",
+    "bootstrap": "lerna bootstrap",
+    "postinstall": "lerna bootstrap"
+  
+  },
+  "workspaces": {
+    "packages": [
+      "packages/**"
+    ]
+  },
+  "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.5.0",
+    "@mui/styled-engine-sc": "^5.4.2",
+    "@reduxjs/toolkit": "^1.8.0",
+    "axios": "^0.26.1",
+    "react-redux": "^7.2.6",
+    "styled-components": "^5.3.3",
+    "yarn": "^1.22.17"
+  }
+}
