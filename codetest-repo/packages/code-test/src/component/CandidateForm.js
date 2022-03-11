@@ -34,11 +34,13 @@ const CandidateForm=()=> {
             gender:selectedValue,
             // onSubmit:true
         }))
+        console.log(candidateData)
        
-        axios.post("http://localhost:9000/home/candidate",candidateData.payload )
+        axios.post("http://localhost:9001/home/candidate",candidateData.payload )
         .then(res => {
-            console.log("submit")
-            setMessage(res)
+  
+            console.log(res)
+            setMessage(res.data)
             setSuccess(true)
         })
         .catch(err=>console.log(err))
